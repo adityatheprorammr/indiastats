@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 import AnimatedNumber from "react-animated-number";
 
-export default () => {
+export default function RoadAccidents() {
   return (
     <ThemeProvider theme={theme}>
       <div>
@@ -38,7 +38,7 @@ export default () => {
       </div>
     </ThemeProvider>
   );
-};
+}
 
 export const Chart = ({ id }) => {
   const devRef = useRef();

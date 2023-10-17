@@ -1,6 +1,5 @@
-import React, { useEffect, useRef } from "react";
-import Plotly from "plotly.js-dist-min";
-import Slide from "react-reveal/Slide";
+import React, { Suspense, useEffect, useRef } from "react";
+
 import {
   Box,
   Grid,
@@ -9,79 +8,37 @@ import {
   ThemeProvider,
   theme,
 } from "@chakra-ui/react";
-import AnimatedNumber from "react-animated-number";
+
+const Title = React.lazy(() => import("../components/Title.js"));
+const BarChart = React.lazy(() => import("../components/BarChart.js"));
+const Total = React.lazy(() => import("../components/Total.js"));
+const Map = React.lazy(() => import("../components/Map.js"));
 
 export default function RoadAccidents() {
+  const isSSR = typeof window === "undefined";
+  if (isSSR) return null;
   return (
     <ThemeProvider theme={theme}>
       <div>
-        <Slide bottom>
+        <Suspense fallback={"loading"}>
           <Title />
-        </Slide>
-        <Slide bottom>
-          <Total />
-        </Slide>
+        </Suspense>
+        <Total />
         <Grid>
           <GridItem colStart={[3]} colEnd={[11]}>
-            <Slide bottom>
-              <Chart />
-            </Slide>
+            <Suspense fallback={"loading"}>
+              <BarChart id="1" />
+            </Suspense>
           </GridItem>
         </Grid>
         <Grid>
           <GridItem colStart={[3]} colEnd={[11]}>
-            <Slide bottom>
-              <Chart id={"2"} />
-            </Slide>
+            <Suspense fallback={"loading"}>
+              <Map id={"2"} />
+            </Suspense>
           </GridItem>
         </Grid>
       </div>
     </ThemeProvider>
   );
 }
-
-export const Chart = ({ id }) => {
-  const devRef = useRef();
-
-  useEffect(() => {
-    var data = [
-      {
-        type: "bar",
-        x: [100, 200, 400, 500, 600, 800],
-        orientation: "h",
-      },
-    ];
-
-    Plotly.newPlot(devRef.current.id, data);
-  }, []);
-
-  return <div id={id || "1"} ref={devRef} />;
-};
-
-const Total = () => {
-  return (
-    <Box textAlign={"center"}>
-      <Heading size={"4xl"}>
-        <AnimatedNumber
-          component="text"
-          value={14559}
-          style={{
-            transition: "5s ease-out",
-            fontSize: 100,
-            background: "#fefefe",
-          }}
-          duration={2000}
-          formatValue={(n) => n.toFixed(0)}
-        />
-      </Heading>
-    </Box>
-  );
-};
-
-const Title = () => {
-  return (
-    <Box textAlign={"center"}>
-      <Heading size={"4xl"}>Road Accidents in India</Heading>
-    </Box>
-  );
-};

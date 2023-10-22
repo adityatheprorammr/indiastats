@@ -12,7 +12,7 @@ import AnimatedNumber from "react-animated-number";
 
 const Total = () => {
   return (
-    <Box textAlign={"center"}>
+    <Box textAlign={"center"} p={"100px"}>
       <Heading size={"4xl"}>
         <AnimatedNumber
           component="text"

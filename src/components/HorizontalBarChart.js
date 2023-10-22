@@ -1,7 +1,7 @@
 import React, { Suspense, useEffect, useRef } from "react";
 import Plotly from 'plotly.js-dist-min'
 
-export const Chart = ({ id }) => {
+export const HorizontalBarChart = ({ id }) => {
   const devRef = useRef();
 
   useEffect(() => {
@@ -20,4 +20,4 @@ export const Chart = ({ id }) => {
 };
 
 
-export default Chart;
+export default HorizontalBarChart;

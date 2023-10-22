@@ -8,15 +8,16 @@ export const Chart = ({ id }) => {
   useEffect(() => {
     var data = [
       {
-        type: "choropleth",
+        type: "scattergeo",
         mode: "markers",
-        locations : ['india'],
+        locations: ['India',"Delhi"],
         locationmode : 'country names',
+      
         marker: {
           size: [20, 30, 15, 10],
           color: [10, 20, 40, 50],
           cmin: 0,
-          cmax: 1000,
+          cmax: 50,
           colorscale: "Greens",
           colorbar: {
             title: "Some rate",
@@ -37,8 +38,8 @@ export const Chart = ({ id }) => {
         resolution: 100,
       },
     };
-
-    Plotly.newPlot(devRef.current, data, layout);
+    var config = {mapboxAccessToken: "pk.eyJ1IjoiYWRpdHlhdGhld2ViZGV2bG9wZXJzIiwiYSI6ImNsbnUzenNzYTBhY24yanRhcG5vbjkwcGYifQ.Zk-TrfPl6_XFibB3qBkXMA"};
+    Plotly.newPlot(devRef.current, data, layout,config);
   }, []);
 
   return <div id={id || "1"} ref={devRef} />;

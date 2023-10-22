@@ -8,37 +8,48 @@ import {
   ThemeProvider,
   theme,
 } from "@chakra-ui/react";
-
+import WithSubnavigation from "../components/layout";
 const Title = React.lazy(() => import("../components/Title.js"));
-const BarChart = React.lazy(() => import("../components/BarChart.js"));
+const BarChart = React.lazy(() =>
+  import("../components/HorizontalBarChart.js")
+);
 const Total = React.lazy(() => import("../components/Total.js"));
 const Map = React.lazy(() => import("../components/Map.js"));
 
 export default function RoadAccidents() {
   const isSSR = typeof window === "undefined";
-  if (isSSR) return null;
   return (
     <ThemeProvider theme={theme}>
-      <div>
-        <Suspense fallback={"loading"}>
-          <Title />
-        </Suspense>
-        <Total />
-        <Grid>
-          <GridItem colStart={[3]} colEnd={[11]}>
-            <Suspense fallback={"loading"}>
-              <BarChart id="1" />
-            </Suspense>
-          </GridItem>
-        </Grid>
-        <Grid>
-          <GridItem colStart={[3]} colEnd={[11]}>
-            <Suspense fallback={"loading"}>
-              <Map id={"2"} />
-            </Suspense>
-          </GridItem>
-        </Grid>
-      </div>
+      <WithSubnavigation>
+        <div>
+          <Suspense fallback={"loading"}>
+            <Title />
+          </Suspense>
+          <Total />
+          <Grid>
+            <GridItem colStart={[3]} colEnd={[11]}>
+              {!isSSR ? (
+                <Suspense fallback={<Box h={100} w={"100%"} />}>
+                  <BarChart id="1" />
+                </Suspense>
+              ) : (
+                <Box h={100} w={"100%"} />
+              )}
+            </GridItem>
+          </Grid>
+          <Grid>
+            <GridItem colStart={[3]} colEnd={[11]}>
+              {!isSSR ? (
+                <Suspense fallback={<Box h={100} w={"100%"} />}>
+                  <Map id={"2"} />
+                </Suspense>
+              ) : (
+                <Box h={100} w={"100%"} />
+              )}
+            </GridItem>
+          </Grid>
+        </div>
+      </WithSubnavigation>
     </ThemeProvider>
   );
 }

@@ -22,29 +22,27 @@ export default function RoadAccidents() {
     <ThemeProvider theme={theme}>
       <WithSubnavigation>
         <div>
-          <Suspense fallback={"loading"}>
-            <Title />
-          </Suspense>
+          <Title />
           <Total />
           <Grid>
             <GridItem colStart={[3]} colEnd={[11]}>
               {!isSSR ? (
-                <Suspense fallback={<Box h={100} w={"100%"} />}>
+                <Suspense fallback={<Box h={"100px"} w={"100%"} />}>
                   <BarChart id="1" />
                 </Suspense>
               ) : (
-                <Box h={100} w={"100%"} />
+                <Box h={"100px"} w={"100%"} />
               )}
             </GridItem>
           </Grid>
           <Grid>
             <GridItem colStart={[3]} colEnd={[11]}>
               {!isSSR ? (
-                <Suspense fallback={<Box h={100} w={"100%"} />}>
+                <Suspense fallback={<Box h={"100px"} w={"100%"} />}>
                   <Map id={"2"} />
                 </Suspense>
               ) : (
-                <Box h={100} w={"100%"} />
+                <Box h={"100px"} w={"100%"} />
               )}
             </GridItem>
           </Grid>

@@ -9,6 +9,7 @@ import {
   theme,
 } from "@chakra-ui/react";
 import WithSubnavigation from "../components/layout";
+import { Slide } from "react-reveal";
 const Title = React.lazy(() => import("../components/Title.js"));
 const BarChart = React.lazy(() =>
   import("../components/HorizontalBarChart.js")
@@ -28,7 +29,9 @@ export default function RoadAccidents() {
             <GridItem colStart={[3]} colEnd={[11]}>
               {!isSSR ? (
                 <Suspense fallback={<Box h={"100px"} w={"100%"} />}>
-                  <BarChart id="1" />
+                  <Slide bottom>
+                    <BarChart id="1" />
+                  </Slide>
                 </Suspense>
               ) : (
                 <Box h={"100px"} w={"100%"} />
@@ -39,7 +42,9 @@ export default function RoadAccidents() {
             <GridItem colStart={[3]} colEnd={[11]}>
               {!isSSR ? (
                 <Suspense fallback={<Box h={"100px"} w={"100%"} />}>
-                  <Map id={"2"} />
+                  <Slide bottom>
+                    <Map id={"2"} />
+                  </Slide>
                 </Suspense>
               ) : (
                 <Box h={"100px"} w={"100%"} />

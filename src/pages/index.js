@@ -18,7 +18,7 @@ export default function CallToActionWithAnnotation() {
     <Layout>
       <Box
         sx={{
-          background: 'url("/background.jpg")',
+          background: 'url("/background.jpeg")',
           backgroundSize: 'cover',
           backgroundPositionY: 'center'
         }}

@@ -17,16 +17,14 @@ export default function CallToActionWithAnnotation() {
   return (
     <Layout>
       <Box
-        sx={{
-          backgroundColor: "rgba(200,100,0,.5)",
-          backgroundBlendMode: "multiply",
-        }}
       >
         <Box
           sx={{
             background: 'url("/background.jpeg")',
             backgroundSize: "cover",
             backgroundPositionY: "center",
+            backgroundColor: "rgba(200,100,0,.5)",
+            backgroundBlendMode: "multiply",
           }}
           minHeight={"calc(100vh - 60px)"}
         >
@@ -71,9 +69,6 @@ export default function CallToActionWithAnnotation() {
                   href={"/"}
                 >
                   Explore
-                </Button>
-                <Button variant={"link"} colorScheme={"blue"} size={"sm"}>
-                  Learn more
                 </Button>
               </Stack>
             </Stack>

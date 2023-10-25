@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import WithSubnavigation from "../components/layout";
 import { Slide } from "react-reveal";
-import useSWR  from 'swr';
+import useSWR from "swr";
 
 const Title = React.lazy(() => import("../components/Title.js"));
 const BarChart = React.lazy(() =>
@@ -21,12 +21,13 @@ const Map = React.lazy(() => import("../components/Map.js"));
 
 export default function RoadAccidents() {
   const isSSR = typeof window === "undefined";
-  const { data, error, isLoading } = useSWR(
-    "http://localhost:8080/",
-    (url) => {
-      fetch(url).then((response) => response.json());
-    }
-  );
+  const { data, error, isLoading } = useSWR("http://localhost:8080/", (url) => {
+    return fetch(url, {
+      mode: "cors",
+    }).then((response) => response.json());
+  });
+
+  console.log(data);
 
   return (
     <ThemeProvider theme={theme}>
@@ -40,7 +41,7 @@ export default function RoadAccidents() {
           </Slide>
           <Grid>
             <GridItem colStart={[3]} colEnd={[11]}>
-              {!isSSR ? (
+              {!isSSR && data ? (
                 <Suspense fallback={<Box h={"100px"} w={"100%"} />}>
                   <Slide bottom>
                     <BarChart
@@ -50,6 +51,7 @@ export default function RoadAccidents() {
                           type: "bar",
                           x: [100, 200, 400, 500, 600, 800],
                           orientation: "h",
+                          ...data,
                         },
                       ]}
                     />

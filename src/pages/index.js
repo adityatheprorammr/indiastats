@@ -18,7 +18,7 @@ export default function CallToActionWithAnnotation() {
     <Layout>
       <Box
         sx={{
-          background: 'url("/background.webp")',
+          background: 'url("/background.jpg")',
           backgroundSize: 'cover',
           backgroundPositionY: 'center'
         }}
@@ -60,6 +60,7 @@ export default function CallToActionWithAnnotation() {
                 _hover={{
                   bg: "green.500",
                 }}
+                href={'/'}
               >
                 Explore
               </Button>

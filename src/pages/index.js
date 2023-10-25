@@ -35,6 +35,7 @@ export default function CallToActionWithAnnotation() {
               fontWeight={600}
               fontSize={{ base: "2xl", sm: "4xl", md: "6xl" }}
               lineHeight={"110%"}
+              color={"white"}
             >
               INDIA STATS
             </Heading>
@@ -42,6 +43,7 @@ export default function CallToActionWithAnnotation() {
               fontWeight={600}
               fontSize={{ base: "xl", sm: "2xl", md: "4xl" }}
               lineHeight={"110%"}
+              color={"white"}
             >
               Your Window to Bharat's Numbers
             </Heading>

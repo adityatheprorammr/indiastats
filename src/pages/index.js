@@ -18,63 +18,67 @@ export default function CallToActionWithAnnotation() {
     <Layout>
       <Box
         sx={{
-          background: 'url("/background.jpeg")',
-          backgroundSize: 'cover',
-          backgroundPositionY: 'center'
+          backgroundColor: "rgba(200,100,0,.5)",
+          backgroundBlendMode: "multiply",
         }}
-        minHeight={'calc(100vh - 60px)'}
       >
-        <Container maxW={"3xl"}>
-          <Stack
-            as={Box}
-            textAlign={"center"}
-            spacing={{ base: 8, md: 14 }}
-            py={{ base: 20, md: 36 }}
-          >
-            <Heading
-              fontWeight={600}
-              fontSize={{ base: "2xl", sm: "4xl", md: "6xl" }}
-              lineHeight={"110%"}
-              color={"white"}
-              bg={'blue'}
-            >
-              INDIA STATS
-            </Heading>
-            <Heading
-              fontWeight={600}
-              fontSize={{ base: "xl", sm: "2xl", md: "4xl" }}
-              lineHeight={"110%"}
-              color={"white"}
-              bg={'blue'}
-
-            >
-              Your Window to Bharat's Numbers
-            </Heading>
+        <Box
+          sx={{
+            background: 'url("/background.jpeg")',
+            backgroundSize: "cover",
+            backgroundPositionY: "center",
+          }}
+          minHeight={"calc(100vh - 60px)"}
+        >
+          <Container maxW={"3xl"}>
             <Stack
-              direction={"column"}
-              spacing={3}
-              align={"center"}
-              alignSelf={"center"}
-              position={"relative"}
+              as={Box}
+              textAlign={"center"}
+              spacing={{ base: 8, md: 14 }}
+              py={{ base: 20, md: 36 }}
             >
-              <Button
-                colorScheme={"green"}
-                bg={"green.400"}
-                rounded={"full"}
-                px={6}
-                _hover={{
-                  bg: "green.500",
-                }}
-                href={'/'}
+              <Heading
+                fontWeight={600}
+                fontSize={{ base: "2xl", sm: "4xl", md: "6xl" }}
+                lineHeight={"110%"}
+                color={"white"}
               >
-                Explore
-              </Button>
-              <Button variant={"link"} colorScheme={"blue"} size={"sm"}>
-                Learn more
-              </Button>
+                INDIA STATS
+              </Heading>
+              <Heading
+                fontWeight={600}
+                fontSize={{ base: "xl", sm: "2xl", md: "4xl" }}
+                lineHeight={"110%"}
+                color={"white"}
+              >
+                Your Window to Bharat's Numbers
+              </Heading>
+              <Stack
+                direction={"column"}
+                spacing={3}
+                align={"center"}
+                alignSelf={"center"}
+                position={"relative"}
+              >
+                <Button
+                  colorScheme={"green"}
+                  bg={"green.400"}
+                  rounded={"full"}
+                  px={6}
+                  _hover={{
+                    bg: "green.500",
+                  }}
+                  href={"/"}
+                >
+                  Explore
+                </Button>
+                <Button variant={"link"} colorScheme={"blue"} size={"sm"}>
+                  Learn more
+                </Button>
+              </Stack>
             </Stack>
-          </Stack>
-        </Container>
+          </Container>
+        </Box>
       </Box>
     </Layout>
   );

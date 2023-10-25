@@ -1,5 +1,5 @@
 "use client";
-import React from 'react';
+import React from "react";
 
 import {
   Box,
@@ -28,7 +28,7 @@ export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
-    <Box>
+    <Box bg={"green.400"}>
       <Flex
         bg={useColorModeValue("white", "gray.800")}
         color={useColorModeValue("gray.600", "white")}
@@ -58,7 +58,7 @@ export default function WithSubnavigation() {
           <Text
             textAlign={useBreakpointValue({ base: "center", md: "left" })}
             fontFamily={"heading"}
-            color={useColorModeValue("gray.800", "white")}
+            color={"color"}
           >
             India Stats
           </Text>
@@ -269,6 +269,4 @@ interface NavItem {
   href?: string;
 }
 
-const NAV_ITEMS: Array<NavItem> = [
-
-];
+const NAV_ITEMS: Array<NavItem> = [];

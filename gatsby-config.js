@@ -20,7 +20,10 @@ module.exports = {
       options: {
         // The property ID; the tracking code won't be generated without it
         trackingId: "G-JJW7NYLSS8",
-        head: true,
+        pluginConfig: {
+          // Puts tracking script in the head instead of the body
+          head: true
+        },
       }
     },
     "@chakra-ui/gatsby-plugin",

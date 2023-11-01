@@ -19,6 +19,7 @@
     "gatsby": "^5.12.4",
     "gatsby-plugin-google-analytics": "^5.12.0",
     "gatsby-plugin-google-fonts": "^1.0.1",
+    "gatsby-plugin-google-gtag": "^5.12.3",
     "gatsby-plugin-typescript": "^5.12.0",
     "plotly.js-dist": "^2.26.2",
     "plotly.js-dist-min": "^2.26.2",

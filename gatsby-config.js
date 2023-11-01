@@ -16,10 +16,10 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: `gatsby-plugin-google-gtag`,
       options: {
         // The property ID; the tracking code won't be generated without it
-        trackingId: "G-JJW7NYLSS8",
+        trackingIds: ["G-JJW7NYLSS8"],
         pluginConfig: {
           // Puts tracking script in the head instead of the body
           head: true

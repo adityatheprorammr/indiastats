@@ -14,10 +14,10 @@ import useSWR from "swr";
 
 const Title = React.lazy(() => import("../components/Title.js"));
 const BarChart = React.lazy(() =>
-  import("../components/HorizontalBarChart.js")
+  import("../components/charts/HorizontalBarChart.js")
 );
 const Total = React.lazy(() => import("../components/Total.js"));
-const Map = React.lazy(() => import("../components/Map.js"));
+const Map = React.lazy(() => import("../components/charts/Map.js"));
 
 export default function RoadAccidents() {
   const isSSR = typeof window === "undefined";
@@ -40,7 +40,7 @@ export default function RoadAccidents() {
             <Total />
           </Slide>
           <Grid>
-            <GridItem colStart={[3]} colEnd={[11]}>
+            <GridItem colStart={[4]} colEnd={[11]}>
               {!isSSR && data ? (
                 <Suspense fallback={<Box h={"100px"} w={"100%"} />}>
                   <Slide bottom>

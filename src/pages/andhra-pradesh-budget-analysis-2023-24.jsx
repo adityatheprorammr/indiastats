@@ -52,7 +52,11 @@ export default function RoadAccidents() {
           Budget Highlights
         </Heading>
 
-        <SimpleGrid templateColumns={"1fr 1fr 1fr 1fr"} gap={"32px"} m={"32px"}>
+        <SimpleGrid
+          templateColumns={["1fr", "1fr", "1fr 1fr 1fr 1fr"]}
+          gap={"32px"}
+          m={"32px"}
+        >
           <SingleStatList
             size={2}
             data={[

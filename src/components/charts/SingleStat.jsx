@@ -9,10 +9,15 @@ const SingleStat = ({
   size = 4,
   title = "",
   description,
+  prefix,
+  format,
 }) => {
   return (
     <Box textAlign={"center"}>
       <Flex justifyContent={"center"} alignItems={"baseline"}>
+        <Text fontSize={size * 25} fontWeight={"bold"}>
+          {prefix}
+        </Text>
         <Heading size={`sm`}>
           <AnimatedNumber
             component="text"
@@ -23,10 +28,14 @@ const SingleStat = ({
               background: "#fefefe",
             }}
             duration={2000}
-            formatValue={(n) => n.toFixed(0)}
+            formatValue={(n) =>
+              new Intl.NumberFormat("en-IN").format(n.toFixed(0))
+            }
           />
         </Heading>
-        <Text fontSize={'24px'} fontWeight={'bold'}>{unit}</Text>
+        <Text fontSize={"24px"} fontWeight={"bold"}>
+          {unit}
+        </Text>
       </Flex>
       <Heading size={`${size / 4 === 1 ? "" : size / 4}xl`} my={"16px"}>
         {title}

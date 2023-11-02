@@ -40,6 +40,7 @@ export default function RoadAccidents() {
         <Box m={"32px"}>
           <SingleStat
             value={1449501}
+            prefix="₹"
             unit="Cr"
             title={"Gross State Domestic Product"}
             description={
@@ -57,6 +58,7 @@ export default function RoadAccidents() {
             data={[
               {
                 value: 260868,
+                prefix: "₹",
                 unit: "cr",
                 title: "Expenditure (excluding debt repayment)",
                 description:
@@ -64,6 +66,7 @@ export default function RoadAccidents() {
               },
               {
                 value: 206280,
+                prefix: "₹",
                 unit: "cr",
                 title: "Receipts (excluding borrowings)",
                 description:
@@ -71,6 +74,7 @@ export default function RoadAccidents() {
               },
               {
                 value: 22317,
+                prefix: "₹",
                 unit: "cr",
                 title: "Revenue deficit",
                 description:
@@ -78,6 +82,7 @@ export default function RoadAccidents() {
               },
               {
                 value: 54588,
+                prefix: "₹",
                 unit: "cr",
                 title: "Fiscal deficit",
                 description:

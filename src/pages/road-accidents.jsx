@@ -12,12 +12,12 @@ import WithSubnavigation from "../components/layout";
 import { Slide } from "react-reveal";
 import useSWR from "swr";
 
-const Title = React.lazy(() => import("../components/Title.js"));
+const Title = React.lazy(() => import("../components/Title"));
 const BarChart = React.lazy(() =>
-  import("../components/charts/HorizontalBarChart.js")
+  import("../components/charts/HorizontalBarChart")
 );
-const Total = React.lazy(() => import("../components/Total.js"));
-const Map = React.lazy(() => import("../components/charts/Map.js"));
+const Total = React.lazy(() => import("../components/Total"));
+const Map = React.lazy(() => import("../components/charts/Map"));
 
 export default function RoadAccidents() {
   const isSSR = typeof window === "undefined";

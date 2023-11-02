@@ -9,11 +9,19 @@ export const HorizontalBarChart = ({
   barwidth = 50,
 }) => {
   const devRef = useRef();
+
   useEffect(() => {
     Plotly.newPlot(
       devRef.current.id,
       data.map((series) => {
-        return { ...series, type: "bar" };
+        return {
+          ...series,
+          type: "bar",
+          text: series.y.map((value) => {
+            return value + "%";
+          }),
+          textposition: 'outside',
+        };
       }),
       {
         height: height,
@@ -21,7 +29,7 @@ export const HorizontalBarChart = ({
     );
   }, []);
 
-  return <div id={id || "1"} ref={devRef} height={height + 'px'} />;
+  return <div id={id || "1"} ref={devRef} height={height + "px"} />;
 };
 
 export default HorizontalBarChart;

@@ -26,13 +26,7 @@ const Map = React.lazy(() => import("../components/charts/Map.js"));
 
 export default function RoadAccidents() {
   const isSSR = typeof window === "undefined";
-  const { data, error, isLoading } = useSWR("http://localhost:8080/", (url) => {
-    return fetch(url, {
-      mode: "cors",
-    }).then((response) => response.json());
-  });
-
-  console.log(data);
+  if(isSSR) return null;
 
   return (
     <ThemeProvider theme={theme}>

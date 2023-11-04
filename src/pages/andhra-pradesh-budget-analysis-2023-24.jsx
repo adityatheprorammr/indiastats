@@ -30,9 +30,7 @@ const Total = React.lazy(() => import("../components/Total"));
 const Map = React.lazy(() => import("../components/charts/Map"));
 
 export default function RoadAccidents() {
-  const isSSR = typeof window === "undefined";
-  if (isSSR) return null;
-
+  
   return (
     <ThemeProvider theme={theme}>
       <WithSubnavigation>
@@ -48,6 +46,7 @@ export default function RoadAccidents() {
           <Box m={"64px"}>
             <SingleStat
               value={1449501}
+              color={"#4CAF50"}
               prefix="₹"
               unit="Cr"
               title={"Gross State Domestic Product"}
@@ -57,58 +56,61 @@ export default function RoadAccidents() {
             />
           </Box>
         </Box>
-        <Heading size={"xl"} textAlign={"center"}>
-          Budget Highlights
-        </Heading>
 
-        <SimpleGrid
-          templateColumns={["1fr", "1fr", "1fr 1fr 1fr 1fr"]}
-          gap={"32px"}
-          m={"32px"}
-        >
-          <SingleStatList
-            size={2}
-            data={[
-              {
-                value: 260868,
-                prefix: "₹",
-                unit: "cr",
-                title: "Expenditure (excluding debt repayment)",
-                description:
-                  "Expenditure (excluding debt repayment) in 2023-24 is estimated to be Rs 2,60,868 crore, an increase of 16% over the revised estimates of 2022-23.  In addition, debt of Rs 18,411 crore will be repaid by the state.",
-              },
-              {
-                value: 206280,
-                prefix: "₹",
-                unit: "cr",
-                title: "Receipts (excluding borrowings)",
-                description:
-                  "Receipts (excluding borrowings) for 2023-24 are estimated to be Rs 2,06,280 crore, an increase of 17% as compared to the revised estimate of 2022-23.  In 2022-23, receipts (excluding borrowings) are estimated to decrease by 7.7% at the revised stage.",
-              },
-              {
-                value: 22317,
-                prefix: "₹",
-                unit: "cr",
-                title: "Revenue deficit",
-                description:
-                  "Revenue deficit in 2023-24 is estimated to be 1.5% of GSDP (Rs 22,317 crore), lower than the revised estimates for 2022-23 (2.2% of GSDP).  In 2022-23, the revenue deficit is expected to be higher than the budget estimate (1.3% of GSDP).",
-              },
-              {
-                value: 54588,
-                prefix: "₹",
-                unit: "cr",
-                title: "Fiscal deficit",
-                description:
-                  "for 2023-24 is targeted at 3.8% of GSDP (Rs 54,588 crore).   In 2022-23, as per the revised estimates, fiscal deficit is expected to be 3.6% of GSDP, same as the budget estimates for the year. ",
-              },
-            ]}
-          />
-        </SimpleGrid>
+        <Box h={"100vh"}>
+          <Heading size={"xl"} textAlign={"center"}>
+            Budget Highlights
+          </Heading>
+
+          <SimpleGrid
+            templateColumns={["1fr", "1fr", "1fr 1fr"]}
+            gap={"32px"}
+            m={"32px"}
+          >
+            <SingleStatList
+              size={2}
+              data={[
+                {
+                  value: 260868,
+                  prefix: "₹",
+                  unit: "cr",
+                  title: "Expenditure (excluding debt repayment)",
+                  description:
+                    "Expenditure (excluding debt repayment) in 2023-24 is estimated to be Rs 2,60,868 crore, an increase of 16% over the revised estimates of 2022-23.  In addition, debt of Rs 18,411 crore will be repaid by the state.",
+                },
+                {
+                  value: 206280,
+                  prefix: "₹",
+                  unit: "cr",
+                  title: "Receipts (excluding borrowings)",
+                  description:
+                    "Receipts (excluding borrowings) for 2023-24 are estimated to be Rs 2,06,280 crore, an increase of 17% as compared to the revised estimate of 2022-23.  In 2022-23, receipts (excluding borrowings) are estimated to decrease by 7.7% at the revised stage.",
+                },
+                {
+                  value: 22317,
+                  prefix: "₹",
+                  unit: "cr",
+                  title: "Revenue deficit",
+                  description:
+                    "Revenue deficit in 2023-24 is estimated to be 1.5% of GSDP (Rs 22,317 crore), lower than the revised estimates for 2022-23 (2.2% of GSDP).  In 2022-23, the revenue deficit is expected to be higher than the budget estimate (1.3% of GSDP).",
+                },
+                {
+                  value: 54588,
+                  prefix: "₹",
+                  unit: "cr",
+                  title: "Fiscal deficit",
+                  description:
+                    "for 2023-24 is targeted at 3.8% of GSDP (Rs 54,588 crore).   In 2022-23, as per the revised estimates, fiscal deficit is expected to be 3.6% of GSDP, same as the budget estimates for the year. ",
+                },
+              ]}
+            />
+          </SimpleGrid>
+        </Box>
         <Heading size={"xl"} textAlign={"center"}>
           Policy Highlights
         </Heading>
         <SimpleGrid
-          templateColumns={["1fr", "1fr", "1fr 1fr 1fr 1fr"]}
+          templateColumns={["1fr", "1fr", "1fr 1fr "]}
           gap={"32px"}
           m={"32px"}
         >

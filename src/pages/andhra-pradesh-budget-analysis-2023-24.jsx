@@ -5,6 +5,7 @@ import {
   Grid,
   GridItem,
   Heading,
+  Text,
   List,
   ListItem,
   SimpleGrid,
@@ -16,6 +17,7 @@ import { Slide } from "react-reveal";
 import useSWR from "swr";
 import SingleStat from "../components/charts/SingleStat";
 import SingleStatList from "../components/charts/SingleStatsGrid";
+import { BrowserOnly } from "../components/BrowserOnly";
 
 const Title = React.lazy(() => import("../components/Title"));
 const HorizontalBarChart = React.lazy(() =>
@@ -34,19 +36,26 @@ export default function RoadAccidents() {
   return (
     <ThemeProvider theme={theme}>
       <WithSubnavigation>
-        <Heading textAlign={"center"} size={"4xl"}>
-          Andhra Pradesh Budget Analysis 2023-24
-        </Heading>
-        <Box m={"32px"}>
-          <SingleStat
-            value={1449501}
-            prefix="₹"
-            unit="Cr"
-            title={"Gross State Domestic Product"}
-            description={
-              "The Gross State Domestic Product (GSDP) of Andhra Pradesh for 2023-24 (at current prices) is projected to be Rs 14,49,501 crore, amounting to growth of 10% over 2022-23."
-            }
-          />
+        <Box h={"calc(100vh - 70px)"}>
+          <Heading textAlign={"center"} size={"4xl"} my={"64px"}>
+            Andhra Pradesh Budget Analysis 2023-24
+          </Heading>
+          <Text textAlign={"center"} my={"40px"}>
+            The Finance Minister of Andhra Pradesh, Mr. Buggana Rajendranath,
+            presented the Budget for the state for the financial year 2023-24 on
+            March 16, 2023.
+          </Text>
+          <Box m={"64px"}>
+            <SingleStat
+              value={1449501}
+              prefix="₹"
+              unit="Cr"
+              title={"Gross State Domestic Product"}
+              description={
+                "The Gross State Domestic Product (GSDP) of Andhra Pradesh for 2023-24 (at current prices) is projected to be Rs 14,49,501 crore, amounting to growth of 10% over 2022-23."
+              }
+            />
+          </Box>
         </Box>
         <Heading size={"xl"} textAlign={"center"}>
           Budget Highlights
@@ -98,39 +107,46 @@ export default function RoadAccidents() {
         <Heading size={"xl"} textAlign={"center"}>
           Policy Highlights
         </Heading>
-        <SimpleGrid templateColumns={"1fr 1fr 1fr 1fr"} gap={"32px"} m={"32px"}>
-          <SingleStatList
-            size={2}
-            data={[
-              {
-                title: "Loan waiver scheme",
-                description:
-                  "The YSR Aasara scheme for waiving outstanding bank loans of women self-help groups was launched in 2020.  Rs 6,700 crore has been allocated towards the scheme in 2023-24.",
-              },
-              {
-                title: "Urban Development and Housing",
-                description:
-                  "Rs 9,381 crore will be allocated towards municipal administration and urban development department in 2023-24.  Under the Pedalandariki Illu Scheme, 30.21 lakh permanent houses will be provided by 2023, of which 4.4 lakh have been constructed so far.  Rs 5,600 crore has been allocated towards this scheme in 2023-24.",
-              },
-              {
-                title: "Livestock insurance",
-                description:
-                  "The YSR Pasu Bhima Yojana has been approved which seeks to provide livestock insurance to farmers.  It will cover improved and indigenous as well as nondescript breeds of animals.",
-              },
-              {
-                title: "Pension",
-                description:
-                  "The government seeks to increase the pension for various categories of pensioners in the state to Rs 3,000 in the coming years.  It has allocated Rs 21,434 crore towards YSR Pension Kanuka in 2023-24.",
-              },
-            ]}
-          />
+        <SimpleGrid
+          templateColumns={["1fr", "1fr", "1fr 1fr 1fr 1fr"]}
+          gap={"32px"}
+          m={"32px"}
+        >
+          <BrowserOnly>
+            <SingleStatList
+              size={2}
+              data={[
+                {
+                  title: "Loan waiver scheme",
+                  description:
+                    "The YSR Aasara scheme for waiving outstanding bank loans of women self-help groups was launched in 2020.  Rs 6,700 crore has been allocated towards the scheme in 2023-24.",
+                },
+                {
+                  title: "Urban Development and Housing",
+                  description:
+                    "Rs 9,381 crore will be allocated towards municipal administration and urban development department in 2023-24.  Under the Pedalandariki Illu Scheme, 30.21 lakh permanent houses will be provided by 2023, of which 4.4 lakh have been constructed so far.  Rs 5,600 crore has been allocated towards this scheme in 2023-24.",
+                },
+                {
+                  title: "Livestock insurance",
+                  description:
+                    "The YSR Pasu Bhima Yojana has been approved which seeks to provide livestock insurance to farmers.  It will cover improved and indigenous as well as nondescript breeds of animals.",
+                },
+                {
+                  title: "Pension",
+                  description:
+                    "The government seeks to increase the pension for various categories of pensioners in the state to Rs 3,000 in the coming years.  It has allocated Rs 21,434 crore towards YSR Pension Kanuka in 2023-24.",
+                },
+              ]}
+            />
+          </BrowserOnly>
         </SimpleGrid>
+
         <Heading size={"lg"} textAlign={"center"}>
           Andhra Pradesh GSDP and Sectoral Growth at Constant Prices
         </Heading>
         <SimpleGrid gridTemplateColumns={"1fr 1fr"}>
           <Box>
-            <List gap={"32px"}>
+            <List gap={"32px"} spacing={"32px"}>
               <ListItem>
                 GSDP: In 2022-23, Andhra Pradesh’s GSDP (at constant prices) is
                 estimated to grow at 7%, same as the national GDP in 2022-23.
@@ -148,32 +164,33 @@ export default function RoadAccidents() {
               </ListItem>
             </List>
           </Box>
-
-          <BarChart
-            height={500}
-            data={[
-              {
-                y: [6.6, 1.0, 6.5, 3.7],
-                x: ["Agriculture", "Manufacturing", "Services", "GSDP"],
-                name: "2019-20",
-              },
-              {
-                y: [0.0, 7.2, -8.5, -2.5],
-                name: "2020-21",
-                x: ["Agriculture", "Manufacturing", "Services", "GSDP"],
-              },
-              {
-                y: [10.8, 8.5, 10.1, 11.2],
-                name: "2021-22",
-                x: ["Agriculture", "Manufacturing", "Services", "GSDP"],
-              },
-              {
-                y: [5.1, 5.0, 10.1, 7.0],
-                name: "2022-23",
-                x: ["Agriculture", "Manufacturing", "Services", "GSDP"],
-              },
-            ]}
-          />
+          <BrowserOnly>
+            <BarChart
+              height={500}
+              data={[
+                {
+                  y: [6.6, 1.0, 6.5, 3.7],
+                  x: ["Agriculture", "Manufacturing", "Services", "GSDP"],
+                  name: "2019-20",
+                },
+                {
+                  y: [0.0, 7.2, -8.5, -2.5],
+                  name: "2020-21",
+                  x: ["Agriculture", "Manufacturing", "Services", "GSDP"],
+                },
+                {
+                  y: [10.8, 8.5, 10.1, 11.2],
+                  name: "2021-22",
+                  x: ["Agriculture", "Manufacturing", "Services", "GSDP"],
+                },
+                {
+                  y: [5.1, 5.0, 10.1, 7.0],
+                  name: "2022-23",
+                  x: ["Agriculture", "Manufacturing", "Services", "GSDP"],
+                },
+              ]}
+            />
+          </BrowserOnly>
         </SimpleGrid>
       </WithSubnavigation>
     </ThemeProvider>
